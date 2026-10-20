@@ -1,0 +1,707 @@
+/* ==========================================================================
+   CSS STYLESHEET: Shivani Suresh Ambekar - Personal Portfolio
+   Pure CSS3 with Modern Layouts, Custom Properties & Responsive Design
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. CSS VARIABLES (Custom Properties)
+   Restricted strictly to the four defined palette colours and shared tokens.
+   -------------------------------------------------------------------------- */
+:root {
+  /* Core Color Palette */
+  --navy: #1e2a4a;        /* Deep navy for navbar, headings, dark sections & footer */
+  --teal: #14a3a3;        /* Teal for brand highlights, underlines, borders & buttons */
+  --soft-white: #f7f9fc;  /* Soft white / light blue-grey for alternating sections */
+  --warm-accent: #f2a65a; /* Warm accent for role text, borders, buttons & offset outline */
+  --white: #ffffff;       /* Pure white for card surfaces */
+
+  /* Typography Stacks */
+  --font-serif: Georgia, "Times New Roman", Times, serif;
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  /* Layout & Rhythm Tokens */
+  --container-max-width: 1100px; /* 1100px max-width container */
+  --transition-speed: 0.25s;
+  --nav-height: 74px;
+}
+
+/* --------------------------------------------------------------------------
+   2. GLOBAL RESET & BASE STYLES
+   Ensures consistent box-sizing, smooth scrolling, and scroll-padding-top.
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth; /* Smooth scrolling to internal anchor targets */
+  scroll-padding-top: var(--nav-height); /* Prevents sticky nav from covering section headings */
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--soft-white);
+  color: #2b364c;
+  line-height: 1.7;
+  overflow-x: hidden; /* Prevents any accidental horizontal scrollbar */
+}
+
+/* Headings in classic, polished Georgia serif font */
+h1, h2, h3 {
+  font-family: var(--font-serif);
+  color: var(--navy);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+h1 {
+  font-size: 2.75rem;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 1.25rem;
+  display: inline-block;
+  position: relative;
+}
+
+/* Short teal underline accent beneath section headings */
+h2::after {
+  content: "";
+  display: block;
+  width: 48px;
+  height: 4px;
+  background-color: var(--teal);
+  border-radius: 2px;
+  margin-top: 0.45rem;
+}
+
+h3 {
+  font-size: 1.35rem;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+/* Base Hyperlinks */
+a {
+  color: var(--teal);
+  text-decoration: none;
+  transition: color var(--transition-speed) ease,
+              background-color var(--transition-speed) ease,
+              border-color var(--transition-speed) ease,
+              transform var(--transition-speed) ease;
+}
+
+/* Centered Max-Width Container */
+.container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+/* Section Wrapper Base Spacing */
+.section {
+  padding: 5.5rem 0;
+}
+
+/* --------------------------------------------------------------------------
+   3. REUSABLE BUTTONS
+   Interactive primary and secondary buttons with hover and focus-visible states.
+   -------------------------------------------------------------------------- */
+.btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+.btn {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.98rem;
+  font-weight: 600;
+  padding: 0.85rem 1.75rem;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  border: 2px solid transparent;
+  transition: background-color var(--transition-speed) ease,
+              border-color var(--transition-speed) ease,
+              color var(--transition-speed) ease,
+              transform var(--transition-speed) ease,
+              box-shadow var(--transition-speed) ease;
+}
+
+/* Primary Button (Teal with hover warm accent) */
+.btn-primary {
+  background-color: var(--teal);
+  border-color: var(--teal);
+  color: var(--white);
+  box-shadow: 0 4px 14px rgba(20, 163, 163, 0.3);
+}
+
+.btn-primary:hover {
+  background-color: var(--warm-accent);
+  border-color: var(--warm-accent);
+  color: var(--navy);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(242, 166, 90, 0.4);
+}
+
+.btn-primary:focus-visible {
+  outline: 3px solid var(--warm-accent);
+  outline-offset: 3px;
+}
+
+/* Secondary Button (Warm outline on dark gradient) */
+.btn-secondary {
+  background-color: transparent;
+  border-color: var(--warm-accent);
+  color: var(--warm-accent);
+}
+
+.btn-secondary:hover {
+  background-color: var(--warm-accent);
+  color: var(--navy);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(242, 166, 90, 0.35);
+}
+
+.btn-secondary:focus-visible {
+  outline: 3px solid var(--teal);
+  outline-offset: 3px;
+}
+
+/* --------------------------------------------------------------------------
+   4. STICKY DARK NAVY NAVIGATION BAR
+   Sticky bar with subtle shadow and teal highlight on hover/focus.
+   -------------------------------------------------------------------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--navy);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.18);
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Brand Logo (Shivani's name in Georgia serif) */
+.site-logo {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: -0.01em;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+}
+
+.site-logo:hover {
+  color: var(--teal);
+}
+
+.site-logo:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+}
+
+/* Navigation Menu (Flexbox) */
+.nav-list {
+  display: flex;
+  list-style: none;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+/* Nav Links with teal highlight on hover and focus */
+.nav-link {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #d1d9e6;
+  padding: 0.5rem 0.85rem;
+  border-radius: 6px;
+  transition: color var(--transition-speed) ease,
+              background-color var(--transition-speed) ease;
+}
+
+.nav-link:hover {
+  color: var(--white);
+  background-color: rgba(20, 163, 163, 0.28); /* Subtle teal highlight */
+}
+
+.nav-link:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+  color: var(--white);
+  background-color: rgba(20, 163, 163, 0.28);
+}
+
+/* --------------------------------------------------------------------------
+   5. HERO / HOME SECTION
+   Navy-to-teal gradient with arch-shaped photo, offset outline, and intro.
+   -------------------------------------------------------------------------- */
+.hero-section {
+  background: linear-gradient(135deg, var(--navy) 0%, #153c54 60%, var(--teal) 100%);
+  color: var(--white);
+  padding: 5.5rem 0 6rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3.5rem;
+}
+
+.hero-text-content {
+  flex: 1 1 580px;
+}
+
+/* Role text in warm accent colour */
+.hero-role {
+  display: inline-block;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--warm-accent);
+  margin-bottom: 0.75rem;
+}
+
+.hero-section h1 {
+  color: var(--white);
+  font-size: 2.9rem;
+  line-height: 1.2;
+}
+
+.hero-intro {
+  font-size: 1.18rem;
+  color: #e2eaf5;
+  line-height: 1.75;
+  margin-top: 1rem;
+  margin-bottom: 2.25rem;
+  max-width: 620px;
+}
+
+/* Profile Photo Frame with Arch Shape & Offset Accent-Colour Outline */
+.hero-photo-wrapper {
+  flex: 0 0 260px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.photo-frame {
+  position: relative;
+  display: inline-block;
+}
+
+/* Offset warm-accent outline placed behind the photo */
+.photo-frame::before {
+  content: "";
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: 100%;
+  height: 100%;
+  border: 3px solid var(--warm-accent);
+  border-radius: 130px 130px 20px 20px; /* Matching arch shape */
+  z-index: 1;
+}
+
+/* Arch-shaped photo with rounded top corners */
+.hero-photo {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 260px;
+  height: 330px;
+  object-fit: cover;
+  object-position: center 20%; /* Centers face in frame */
+  border-radius: 130px 130px 20px 20px; /* Arch shape */
+  border: 3px solid var(--white);
+  box-shadow: 0 16px 36px rgba(10, 20, 40, 0.4);
+  background-color: var(--navy);
+}
+
+/* --------------------------------------------------------------------------
+   6. ABOUT ME SECTION (White background)
+   Short bio plus two structured cards for Education and Career interests.
+   -------------------------------------------------------------------------- */
+.about-section {
+  background-color: var(--white);
+}
+
+.about-bio {
+  font-size: 1.1rem;
+  color: #3b475c;
+  max-width: 820px;
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+}
+
+.about-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.about-card {
+  background-color: var(--soft-white);
+  border: 1px solid #e5ecf5;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 4px 14px rgba(30, 42, 74, 0.04);
+  transition: transform var(--transition-speed) ease,
+              border-color var(--transition-speed) ease,
+              box-shadow var(--transition-speed) ease;
+}
+
+.about-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--teal);
+  box-shadow: 0 8px 20px rgba(20, 163, 163, 0.12);
+}
+
+.about-card h3 {
+  color: var(--navy);
+  margin-bottom: 0.75rem;
+}
+
+.about-card p {
+  color: #4a5568;
+  line-height: 1.65;
+}
+
+/* --------------------------------------------------------------------------
+   7. SKILLS SECTION (Soft white / light blue-grey background)
+   5 cards in a responsive grid, each with accent left border and hover lift.
+   -------------------------------------------------------------------------- */
+.skills-section {
+  background-color: var(--soft-white);
+  border-top: 1px solid #e8eef6;
+  border-bottom: 1px solid #e8eef6;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.skill-card {
+  background-color: var(--white);
+  border: 1px solid #e5ecf5;
+  border-left: 4px solid var(--warm-accent); /* Accent-coloured left border */
+  border-radius: 8px;
+  padding: 1.6rem 1.4rem;
+  box-shadow: 0 4px 12px rgba(30, 42, 74, 0.04);
+  transition: transform var(--transition-speed) ease,
+              box-shadow var(--transition-speed) ease,
+              border-left-color var(--transition-speed) ease;
+}
+
+/* Gentle lift and highlight on hover */
+.skill-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(30, 42, 74, 0.08);
+  border-left-color: var(--teal);
+}
+
+.skill-card h3 {
+  font-size: 1.25rem;
+  color: var(--navy);
+  margin-bottom: 0.4rem;
+}
+
+.skill-descriptor {
+  font-size: 0.92rem;
+  color: #5c687e;
+  line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   8. PROJECTS SECTION (White background)
+   2 cards with title, description, tech tags, soft shadow, teal border & lift.
+   -------------------------------------------------------------------------- */
+.projects-section {
+  background-color: var(--white);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.25rem;
+  margin-top: 2rem;
+}
+
+.project-card {
+  background-color: var(--white);
+  border: 1.5px solid var(--teal); /* Teal border */
+  border-radius: 12px;
+  padding: 2.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 6px 18px rgba(20, 163, 163, 0.08); /* Soft shadow */
+  transition: transform var(--transition-speed) ease,
+              box-shadow var(--transition-speed) ease;
+}
+
+/* Gentle lift and deepened shadow on hover */
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(20, 163, 163, 0.18);
+}
+
+.project-card:focus-visible {
+  outline: 3px solid var(--teal);
+  outline-offset: 3px;
+}
+
+.project-body {
+  margin-bottom: 1.5rem;
+}
+
+.project-title {
+  color: var(--navy);
+  font-size: 1.35rem;
+  margin-bottom: 0.85rem;
+}
+
+.project-description {
+  color: #4a5568;
+  line-height: 1.65;
+  font-size: 1rem;
+}
+
+/* Small rounded technology tags */
+.project-tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  padding-top: 1.25rem;
+  border-top: 1px solid #eef2f7;
+}
+
+.tech-tag {
+  background-color: var(--soft-white);
+  color: var(--navy);
+  border: 1px solid #dce4ef;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.3rem 0.75rem;
+  border-radius: 16px; /* Small rounded tags */
+  display: inline-block;
+  line-height: 1.3;
+}
+
+/* --------------------------------------------------------------------------
+   9. CONTACT SECTION (Dark gradient section)
+   Navy-to-teal gradient background, short invitation, and two action buttons.
+   -------------------------------------------------------------------------- */
+.contact-section {
+  background: linear-gradient(135deg, var(--navy) 0%, #153c54 60%, var(--teal) 100%);
+  color: var(--white);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.contact-section h2 {
+  color: var(--white);
+}
+
+.contact-section h2::after {
+  margin-left: auto;
+  margin-right: auto;
+  background-color: var(--warm-accent); /* Warm accent underline on dark */
+}
+
+.contact-invitation {
+  font-size: 1.15rem;
+  color: #e2eaf5;
+  max-width: 620px;
+  margin: 0.5rem auto 2.25rem auto;
+  line-height: 1.7;
+}
+
+.contact-btn-group {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+/* --------------------------------------------------------------------------
+   10. FOOTER (Dark navy background)
+   Centered copyright line with Shivani Suresh Ambekar's name.
+   -------------------------------------------------------------------------- */
+.site-footer {
+  background-color: var(--navy);
+  color: #a8b6cb;
+  padding: 2.25rem 0;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-text {
+  font-size: 0.95rem;
+}
+
+/* --------------------------------------------------------------------------
+   11. ACCESSIBILITY: PREFERS-REDUCED-MOTION
+   Disables animations and transitions for users requesting reduced motion.
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   12. RESPONSIVE MEDIA QUERIES (Mobile screens under 768px)
+   Stacks nav, hero (photo placed ABOVE text), cards, and prevents overflow.
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  :root {
+    --nav-height: auto;
+  }
+
+  .site-header {
+    height: auto;
+    padding: 0.85rem 0;
+  }
+
+  /* Stack header and navigation vertically */
+  .header-container {
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
+  }
+
+  .nav-list {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.35rem 0.6rem;
+  }
+
+  .nav-link {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.65rem;
+  }
+
+  /* Hero Section: Photo placed ABOVE intro text */
+  .hero-section {
+    padding: 4rem 0;
+    text-align: center;
+  }
+
+  .hero-container {
+    flex-direction: column;
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  .hero-photo-wrapper {
+    order: -1; /* Places the profile photo above the text on mobile */
+  }
+
+  .photo-frame::before {
+    top: 8px;
+    left: 8px;
+  }
+
+  .hero-photo {
+    width: 220px;
+    height: 280px;
+    border-radius: 110px 110px 16px 16px;
+  }
+
+  .hero-section h1 {
+    font-size: 2.15rem;
+  }
+
+  .hero-intro {
+    font-size: 1.05rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-text-content .btn-group {
+    justify-content: center;
+  }
+
+  /* Section Spacing & Typography */
+  .section {
+    padding: 3.75rem 0;
+  }
+
+  h2 {
+    font-size: 1.65rem;
+  }
+
+  /* Stack About Cards into 1 column */
+  .about-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  /* Stack Projects Cards into 1 column */
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    padding: 1.75rem;
+  }
+
+  /* Stack Contact Buttons vertically */
+  .contact-btn-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .contact-btn-group .btn {
+    width: 100%;
+  }
+}

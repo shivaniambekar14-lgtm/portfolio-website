@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shivani Suresh Ambekar | Portfolio</title>
+    <meta name="description" content="Personal portfolio of Shivani Suresh Ambekar, aspiring software developer and final-year Information Technology student.">
+    <!-- Link to the external CSS stylesheet -->
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+
+    <!-- ====================================================================
+         1. STICKY DARK NAVY NAVIGATION BAR
+         Contains brand logo and smooth anchor links with hover/focus highlights.
+         ==================================================================== -->
+    <header class="site-header">
+      <div class="container header-container">
+        <!-- Logo linking to the top/home section -->
+        <a href="#home" class="site-logo">Shivani Suresh Ambekar</a>
+
+        <!-- Main navigation links jumping to each section via anchor IDs -->
+        <nav aria-label="Main Navigation">
+          <ul class="nav-list">
+            <li><a href="#home" class="nav-link">Home</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#skills" class="nav-link">Skills</a></li>
+            <li><a href="#projects" class="nav-link">Projects</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main>
+
+      <!-- ==================================================================
+           2. HERO / HOME SECTION
+           Navy-to-teal gradient background, name, role, intro, CTA buttons,
+           and arch-shaped profile photo with offset accent outline.
+           ================================================================== -->
+      <section id="home" class="section hero-section" aria-labelledby="hero-title">
+        <div class="container hero-container">
+          <!-- Intro text placed beside photo on desktop, below on mobile -->
+          <div class="hero-text-content">
+            <span class="hero-role">Aspiring Software Developer</span>
+            <h1 id="hero-title">Shivani Suresh Ambekar</h1>
+            <p class="hero-intro">
+              Final-year IT student skilled in Core Java and passionate about software development. Eager to build innovative solutions and grow as a developer.
+            </p>
+            <div class="btn-group">
+              <a href="#projects" class="btn btn-primary">View my projects</a>
+              <a href="#contact" class="btn btn-secondary">Contact me</a>
+            </div>
+          </div>
+
+          <!-- Arch-shaped profile photo with offset accent-colour outline -->
+          <div class="hero-photo-wrapper">
+            <div class="photo-frame">
+              <img src="C:\Users\HP\Desktop\Shivani_Ambekar_HTML_CSS_Portfolio\images\profile.jpg.jpeg" alt="Portrait of Shivani Suresh Ambekar" class="hero-photo">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================================================================
+           3. ABOUT ME SECTION (Clean White Background)
+           Short biography plus two cards: Education and Career interests.
+           ================================================================== -->
+      <section id="about" class="section about-section" aria-labelledby="about-title">
+        <div class="container">
+          <h2 id="about-title">About Me</h2>
+          
+          <p class="about-bio">
+            I am a dedicated technology student passionate about crafting clean, efficient, and user-friendly software. With hands-on academic and project experience in Core Java and web development, I thrive on tackling challenging problems and continuously expanding my technical skillset.
+          </p>
+
+          <div class="about-cards-grid">
+            <article class="about-card">
+              <h3>Education</h3>
+              <p>
+                B.Tech in Information Technology (final year), Priyadarshini College of Engineering, Hingna, Nagpur
+              </p>
+            </article>
+
+            <article class="about-card">
+              <h3>Career interests</h3>
+              <p>
+                Software development, building innovative solutions
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================================================================
+           4. SKILLS SECTION (Soft White / Light Blue-Grey Background)
+           5 skill cards in a responsive grid with accent-coloured left border.
+           ================================================================== -->
+      <section id="skills" class="section skills-section" aria-labelledby="skills-title">
+        <div class="container">
+          <h2 id="skills-title">Skills</h2>
+          
+          <div class="skills-grid">
+            <!-- Skill 1 -->
+            <article class="skill-card">
+              <h3>HTML</h3>
+              <p class="skill-descriptor">Semantic structure, modern standards & accessible markup</p>
+            </article>
+
+            <!-- Skill 2 -->
+            <article class="skill-card">
+              <h3>CSS</h3>
+              <p class="skill-descriptor">Responsive layouts, Flexbox, CSS Grid & modern styling</p>
+            </article>
+
+            <!-- Skill 3 -->
+            <article class="skill-card">
+              <h3>JavaScript</h3>
+              <p class="skill-descriptor">Core programming, interactive logic & dynamic web features</p>
+            </article>
+
+            <!-- Skill 4 -->
+            <article class="skill-card">
+              <h3>Java</h3>
+              <p class="skill-descriptor">Core Java, object-oriented principles & backend development</p>
+            </article>
+
+            <!-- Skill 5 -->
+            <article class="skill-card">
+              <h3>Communication</h3>
+              <p class="skill-descriptor">Technical collaboration, articulate problem solving & teamwork</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================================================================
+           5. PROJECTS SECTION (Clean White Background)
+           2 project cards with teal border, soft shadow, tech tags, and hover lift.
+           ================================================================== -->
+      <section id="projects" class="section projects-section" aria-labelledby="projects-title">
+        <div class="container">
+          <h2 id="projects-title">Projects</h2>
+
+          <div class="projects-grid">
+            <!-- Project 1 Card -->
+            <article class="project-card" tabindex="0">
+              <div class="project-body">
+                <h3 class="project-title">WeCare - Hospital Management System</h3>
+                <p class="project-description">
+                  A responsive hospital website that provides information about doctors, departments, and services, with an appointment booking feature.
+                </p>
+              </div>
+              <ul class="project-tech-list" aria-label="Technologies used in WeCare">
+                <li class="tech-tag">HTML</li>
+                <li class="tech-tag">CSS</li>
+                <li class="tech-tag">JavaScript</li>
+                <li class="tech-tag">Supabase</li>
+              </ul>
+            </article>
+
+            <!-- Project 2 Card -->
+            <article class="project-card" tabindex="0">
+              <div class="project-body">
+                <h3 class="project-title">YourFinanceBuddy - Personal Finance Management</h3>
+                <p class="project-description">
+                  A personal finance application that helps users track expenses, split bills, and analyze income tax by comparing old and new tax regimes.
+                </p>
+              </div>
+              <ul class="project-tech-list" aria-label="Technologies used in YourFinanceBuddy">
+                <li class="tech-tag">React</li>
+                <li class="tech-tag">Spring Boot</li>
+                <li class="tech-tag">Java</li>
+                <li class="tech-tag">MySQL</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================================================================
+           6. CONTACT SECTION (Dark Gradient Section)
+           Dark navy-to-teal gradient, short invitation sentence, and buttons.
+           ================================================================== -->
+      <section id="contact" class="section contact-section" aria-labelledby="contact-title">
+        <div class="container">
+          <h2 id="contact-title">Contact</h2>
+          
+          <p class="contact-invitation">
+            I am actively looking for internship opportunities and software development collaborations. Feel free to reach out via email or explore my open-source code on GitHub!
+          </p>
+
+          <div class="contact-btn-group">
+            <a href="mailto:shivaniambekar14@gmail.com" class="btn btn-primary" aria-label="Send email to Shivani Suresh Ambekar">
+              Email me
+            </a>
+            <a href="https://github.com/shivaniambekar14-lgtm" target="_blank" rel="noopener" class="btn btn-secondary" aria-label="Visit Shivani Suresh Ambekar's GitHub Profile">
+              GitHub profile
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ====================================================================
+         7. FOOTER (Dark Navy Background)
+         Centered copyright line with Shivani Suresh Ambekar's name.
+         ==================================================================== -->
+    <footer class="site-footer">
+      <div class="container">
+        <p class="footer-text">&copy; 2026 Shivani Suresh Ambekar. All rights reserved.</p>
+      </div>
+    </footer>
+
+  </body>
+</html>
